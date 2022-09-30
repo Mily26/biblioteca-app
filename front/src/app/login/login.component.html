@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+      <form [formGroup]="loginForm">
+        <div class="mb-3">
+          <label for="inputEmail" class="form-label">Email</label>
+          <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" formControlName="email">
+          <div *ngIf="this.loginForm.controls['email'].invalid && this.loginForm.controls['email'].dirty" class="alert alert-danger mt-1">
+            <div *ngIf="this.loginForm.controls['email'].errors?.['required']">
+              El email es requerido
+            </div>
+            <div *ngIf="this.loginForm.controls['email'].errors?.['email']">
+              Ingrese un email valido
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="inputPassword" class="form-label">Contraseña</label>
+          <input type="password" class="form-control" id="inputPassword" formControlName="password">
+          <div *ngIf="this.loginForm.controls['password'].invalid && this.loginForm.controls['password'].dirty" class="alert alert-danger mt-1">
+            <div *ngIf="this.loginForm.controls['password'].errors?.['required']">
+              La contraseña es requerida
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="validateUser()">Ingresar</button>&nbsp;
+        <a class="ml-2 btn btn-info" routerLink="/registro">Registro de nuevo usuario</a>
+        <p class="alert alert-danger mt-4" *ngIf="isPasswordIncorrect">Usuario o contraseña incorrectos.</p>
+      </form>
+    </div>
+  </div>
+</div>

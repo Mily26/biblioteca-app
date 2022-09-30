@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Devolver un libro</h1>
+            <p class="mt-2">Estos son los libros que aún no devolviste</p>
+            <form [formGroup]="returnForm">
+                <select class="form-select" aria-label="Default select example" formControlName="lendingId" >
+                    <option value="">Seleccioná uno</option>
+                    <option *ngFor="let lending of lendingsNotReturned" [value]="lending.lendingId">{{lending.author}} - {{lending.title}}</option>
+                </select>
+            </form>
+            <button type="button" class="btn btn-primary mt-4" (click)="returnBook()"
+                [disabled]="!returnForm.valid"
+            >Devolver</button>
+        </div>
+    </div>
+</div>

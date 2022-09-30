@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Mis prestamos</h1>
+            <p class="mt-2">Estos son los libros que solicitaste: <a class="btn btn-primary" routerLink="/nuevo-prestamo">Solicitar un nuevo prestamo</a></p>
+            <p *ngIf="empty">No tenés prestamos solicitados.</p>
+            <table class="table mt-2" *ngIf="!empty">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Autor</th>
+                    <th scope="col">Fecha de prestamo</th>
+                    <th scope="col">Fecha de devolución</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let lending of lendingList">
+                    <th scope="row">{{lending.lendingId}}</th>
+                    <td>{{lending.title}}</td>
+                    <td>{{lending.author}}</td>
+                    <td>{{lending.dateOut}}</td>
+                    <td>{{lending.dateReturn}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>

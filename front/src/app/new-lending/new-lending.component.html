@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Solicitar un nuevo prestamo</h1>
+            <form [formGroup]="newLendingForm" (ngSubmit)="submit()">
+                <div class="mb-3">
+                    <label for="inputEmail" class="form-label">Libro</label>
+                    <select id="inputBook" class="form-select" aria-label="Default select example"
+                        formControlName="bookId"
+                    >
+                        <option value="">Seleccioná uno</option>
+                        <option *ngFor="let book of books" [value]="book.id">{{book.title}} - {{book.author}}</option>
+                    </select>
+                </div>
+                <div class="form-label">
+                    <span class="form-label">
+                        Fecha máxima de devolución:
+                    </span>
+                    <span>
+                        {{maxReturnDate}}
+                    </span>
+                </div>
+
+                <button type="button" class="btn btn-primary" (click)="submit()" [disabled]="!newLendingForm.valid">Solicitar</button>
+            </form>
+        </div>
+    </div>
+</div>

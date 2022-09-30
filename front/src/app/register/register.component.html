@@ -1,0 +1,85 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Registrarse como usuario</h1>
+            <p class="mt-2">Aquí puedes registrarte como usuario de la biblioteca.</p>
+        </div>
+        <form [formGroup]="registerForm">
+            <div class="mb-3">
+                <label for="inputEmail" class="form-label">Email</label>
+                <input type="email" formControlName="email" class="form-control" id="inputEmail">
+
+                <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].dirty" class="alert alert-danger mt-1">
+                    <div *ngIf="registerForm.controls['email'].errors?.['required']">
+                        El email es requerido
+                    </div>
+                    <div *ngIf="registerForm.controls['email'].errors?.['email']">
+                        Por favor ingrese un email válido
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="inputPassword" class="form-label">Contraseña</label>
+                <input type="password" formControlName="password" class="form-control" id="inputPassword">
+                <div *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].dirty" class="alert alert-danger mt-1">
+                    <div *ngIf="registerForm.controls['password'].errors?.['required']">
+                        La contraseña es requerida
+                    </div>
+                    <div *ngIf="registerForm.controls['password'].errors?.['minlength']">
+                        Por favor ingrese al menos 8 caracteres
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="inputName" class="form-label">Nombre</label>
+                <input type="text" formControlName="name" class="form-control" id="inputName">
+                <div *ngIf="registerForm.controls['name'].invalid && registerForm.controls['name'].dirty" class="alert alert-danger mt-1">
+                    <div *ngIf="registerForm.controls['name'].errors?.['required']">
+                        El nombre es requerido
+                    </div>
+                    <div *ngIf="registerForm.controls['name'].errors?.['minlength']">
+                        Por favor ingrese al menos 3 caracteres
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="inputLastNameP" class="form-label">Apellido Paterno</label>
+                <input type="text" formControlName="lastNameP" class="form-control" id="inputLastNameP">
+                <div *ngIf="registerForm.controls['lastNameP'].invalid && registerForm.controls['lastNameP'].dirty" class="alert alert-danger mt-1">
+                    <div *ngIf="registerForm.controls['lastNameP'].errors?.['required']">
+                        El apellido paterno es requerido
+                    </div>
+                    <div *ngIf="registerForm.controls['lastNameP'].errors?.['minlength']">
+                        Por favor ingrese al menos 3 caracteres
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="inputLastNameM" class="form-label">Apellido Materno</label>
+                <input type="text" formControlName="lastNameM" class="form-control" id="inputLastNameM">
+                <div *ngIf="registerForm.controls['lastNameM'].invalid && registerForm.controls['lastNameM'].dirty" class="alert alert-danger mt-1">
+                    <div *ngIf="registerForm.controls['lastNameM'].errors?.['required']">
+                        El apellido materno es requerido
+                    </div>
+                    <div *ngIf="registerForm.controls['lastNameM'].errors?.['minlength']">
+                        Por favor ingrese al menos 3 caracteres
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="inputAddress" class="form-label">Direccion</label>
+                <input type="text" formControlName="address" class="form-control" id="inputAddress">
+                <div *ngIf="registerForm.controls['address'].invalid && registerForm.controls['address'].dirty" class="alert alert-danger mt-1">
+                    <div *ngIf="registerForm.controls['address'].errors?.['required']">
+                        La dirección es requerida
+                    </div>
+                    <div *ngIf="registerForm.controls['address'].errors?.['minlength']">
+                        Por favor ingrese al menos 8 caracteres
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary" (disabled)="registerForm.invalid"
+            (click)="registerUser()">Registrarse</button>
+        </form>
+    </div>
+</div>
